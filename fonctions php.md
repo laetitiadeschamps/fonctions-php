@@ -4,7 +4,6 @@
 ### général 
 - *empty($variable)* : permet de vérifier si une variable (**argument 1**) est vide. **Renvoie true / false.**
 - *isset($variable)* : permet de vérifier si une variable (**argument 1**) existe. **Renvoie true / false.**
-- 
 
 ### int
 - *number_format($number, $nbDécimales, $séparateurDecimales, $séparateurMilliers)* : Permet de formater un nombre $number(**argument 1**), de préciser le nombre de chiffres après la virgule à afficher (**argument 2**), de préciser comment séparer visuellement les décimales (**argument 3**), de préciser comment spéarer visuellement les milliers et les centaines (**argument 4**). **Renvoie le nombre reformaté.**
