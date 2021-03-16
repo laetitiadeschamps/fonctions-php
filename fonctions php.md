@@ -39,6 +39,8 @@
 ### Serveur
 - *mail($destinataire, $sujet, $message)* : envoie un mail au destinataire (**argument 1**) ayant comme sujet l'**argument 2** et comme corps de texte l'**argument 3**. Des paramètres optionnels permettent de rajouter un expéditeur entre autres.  **Retourne true/false selon si l'envoi a fonctionné**.
 - *header('Location:$url')* : redirige vers la page indique en $url (**argument 1**). **Pas de valeur de retour**.
+*N'oubliez jamais que header() doit être appelée avant que le moindre contenu ne soit envoyé, soit par des lignes HTML habituelles dans le fichier, soit par des affichages PHP. Une erreur très classique est de lire un fichier avec include ou require, et de laisser des espaces ou des lignes vides, qui produiront un affichage avant que la fonction header() ne soit appelée. Le même problème existe avec les fichiers PHP/HTML standards.*
+
 
 ### Dates
 - *date($format, $timestamp)* : convertit une date au format mentionné en **argument 1**. Si le $timestamp(**argument 2**) n'est pas précisé, la date du jour sera utilisée. Sinon ce sera la date en **argument 2**. **Retourne la date créée** 
