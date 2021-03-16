@@ -21,6 +21,7 @@
 - *min($array)* : recupère la valeur minimum dans un array (**argument 1**). **Retourne la valeur récupérée**.
 
 ### strings
+- *strlen($string)* : renvoie la longueur de la chaîne de caractère en **argument 1**. **Retourne le nombre de caractères**.
 - *substr($variable, $index de départ, $nb_caractères)* : renvoie une portion d'une string (**argument 1**). Cette portion débutera par la valeur précisée en (**argument 2**), et s'arrêtera selon la valeur précisée en (**argument 3**).**Retourne la portion choisie**.
 *l'index(**argument2**) correspond au nombre de caractères à partir duquel débute la sélection, à partir de 0. Si l'index est négatif, il indique le nombre de caractères à partir duquel débute la sélection, mais en partant de la fin de la chaîne de caractères.*
 *Le nombre de caractères(**argument 3**) correspond à la longueur du texte à sélectionner s'il est positif. Si le nombre est négatif, il correspond à l'index où la sélection s'arrête, à partir de la fin. S'il n'est pas précisé, la sélection ira jusqu'à la fin de la chaîne*.
@@ -30,5 +31,16 @@
 
 ## Changements de types
 - *implode($séparateur, $array)* : convertit un array en string. Met bout à bout les valeurs d'un tableau(**argument 2**) en les séparant par le séparateur indiqué (**argument 1**). **Retourne la string finale**.
+- *str_split($string, $longueur)* : convertit une string en array. Eclate les valeurs d'une string(**argument 1**) en différentes valeurs dans un array. si la longueur (**argument 2**) n'est pas précisée, chaque lettre sera une valeur du tableau. Si elle est précisée, la string (**argument 1**) sera éclatée en segments de la longueur de l'**argument 2**, et chaque segment sera une valeur du tableau. **Retourne l'array final**.
 - *explode($separateur, $string)* : convertit une string en array. Eclate les valeurs d'une string(**argument 2**) en différentes valeurs dans un array. A chaque occurrence du séparateur indiqué (**argument 1**), une nouvelle valeur sera créee dans le tableau. **Retourne l'array final**.
 - *intval($variable)* : transforme une string (**argument 1**) en int. **Retourne l'int créé**.
+
+## Serveur
+- *mail($destinataire, $sujet, $message)* : envoie un mail au destinataire (**argument 1**) ayant comme sujet l'**argument 2** et comme corps de texte l'**argument 3**. Des paramètres optionnels permettent de rajouter un expéditeur entre autres.  **Retourne true/false selon si l'envoi a fonctionné**.
+- *header('Location:$url')* : redirige vers la page indique en $url (**argument 1**). **Pas de valeur de retour**.
+
+## Dates
+- *date($format, $timestamp)* : convertit une date au format mentionné en **argument 1**. Si le $timestamp(**argument 2**) n'est pas précisé, la date du jour sera utilisée. Sinon ce sera la date en **argument 2**. **Retourne la date créée** 
+- *Ex : Date('j/m/Y') affichera une date au format 01/01/2021* 
+Notations pour le $format : j => numéro du jour / m => numéro du mois / F=> nom du mois / y => année sur 2 chiffres Y => année sur 4 chiffres / h=> heures / i=> minutes / s=> secondes / l=> jour de la semaine
+Les noms de mois apparaissent en anglais par défaut, il faut configurer la locale en français avec `setlocale(LC_TIME,"fr_FR.UTF-8","French_France.1252");`.
