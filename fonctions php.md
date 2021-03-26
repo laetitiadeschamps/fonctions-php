@@ -8,7 +8,7 @@
 
 ### int
 - *number_format($number, $nbDécimales, $séparateurDecimales, $séparateurMilliers)* : Permet de formater un nombre $number(**argument 1**), de préciser le nombre de chiffres après la virgule à afficher (**argument 2**), de préciser comment séparer visuellement les décimales (**argument 3**), de préciser comment séparer visuellement les milliers et les centaines (**argument 4**). **Retourne le nombre reformaté.**
-
+- *base_convert($numero, $basedépart, $basefin)* : convertit un nombre (**argument 1**) d'une base **argument 2** à une base **argument 3**. **Retourne le nombre converti.**
 
 ### arrays
 - *count($array)* ou *sizeof($array)*  : retourne la taille (nombre de valeurs) d'un tableau $array(**argument1**).
@@ -20,7 +20,10 @@
 - *array_search($valeur, $array)* : recherche si une valeur(**argument 1**) apparait dans un array (**argument 2**). **Retourne false si la valeur n'apparait pas. Retourne son index dans la tableau si la valeur apparait**.
 - *array_key_exists($key, $array)* : recherche si une valeur(**argument 1**) apparait comme index dans un array (**argument 2**). **Retourne true / false**.
 - *min($array)* : recupère la valeur minimum dans un array (**argument 1**). **Retourne la valeur récupérée**.
-
+- *splice($array, $indexDépart, $longueur, $remplacement)* : Supprime et remplace certaines valeurs dans un tableau (**argument 1**), la sélection supprime les valeurs en partant de celle à  l'index **argument 2**, jusqu'à la valeur en index **argument 3**. Les caractères en **argument 4** seront ajoutés à la place de la section supprimée. **Retourne la portion du tableau conservée**.
+  *L'**argument 2** si positif : index de la valeur  à partir de laquelle la supression commence. Si négatif, position de la valeur de départ en partant de la fin du tableau*
+  *L'**argument 3** si positif : nombre de valeurs à supprimer. Si absent, supprime toutes les valeurs jusqu'à la fin de l'array.*
+  
 ### strings
 - *strlen($string)* : renvoie la longueur de la chaîne de caractère en **argument 1**. **Retourne le nombre de caractères**.
 - *substr($variable, $index de départ, $nb_caractères)* : renvoie une portion d'une string (**argument 1**). Cette portion débutera par la valeur précisée en (**argument 2**), et s'arrêtera selon la valeur précisée en (**argument 3**).**Retourne la portion choisie**.
