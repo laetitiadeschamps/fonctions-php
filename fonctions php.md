@@ -52,28 +52,32 @@ Notations pour le $format : j => numéro du jour / m => numéro du mois / F=> no
 Les noms de mois apparaissent en anglais par défaut, il faut configurer la locale en français avec `setlocale(LC_TIME,"fr_FR.UTF-8","French_France.1252");`.
 
 ### Objets
-  ## Classes 
-Modèles qui permettront ensuite de créer des objets. On paramètre une classe en lui donnant des propriétés, des méthodes etc , et ainsi tous les objets créés à partir de ce modèle (appelées **instances**) auront automatiquement ces propriétés et méthodes. Il suffira lors de la création de l'instance de renseigner les valeurs à affecter aux propriétés. Les classes sont nommées en UpperCamelCase par convention, et on chaque classe créée doit être dans un fichier php séparé du même nom.
+  #### Classes 
+- Modèles qui permettront ensuite de créer des objets. On paramètre une classe en lui donnant des **propriétés**, des **méthodes** etc , et ainsi tous les objets créés à partir de ce modèle (appelées **instances**) auront automatiquement ces **propriétés** et **méthodes**. Il suffira lors de la création de l'instance de renseigner les valeurs à affecter aux propriétés. Les classes sont nommées en UpperCamelCase par convention, et on chaque classe créée doit être dans un fichier php séparé du même nom.
 
-- Les propriétés peuvent être public ou private (nom à indiquer avant la déclaration de la propriété, qui determinera si la propriété est private ou public). Une propriété public sera accessible partout, même en dehors de la classe. Un propriété private ne sera accessible qu'à l'intérieur de la classe. Ce qui signifie qu'on ne pourra l'appeler que dans les méthodes de la classe.
-On préfère mettre toutes les propriétés en private et les methodes en public, afin que les propriétés ne puissent pas être modifiées directement, mais que l'on soit obligés de passer par une méthode pour les modifier (la méthode permet de ne pas modifier directement la propriété, mais d'écrire du code afin de vérifier la valeur saisie avant de modifier).
+- Les **propriétés** peuvent être *public* ou *private* (*nom à indiquer avant la déclaration de la propriété, qui determinera si la propriété est private ou public*). Une propriété *public* sera **accessible partout**, même en dehors de la classe. Un propriété *private* ne sera accessible qu'à l'intérieur de la classe. Ce qui signifie qu'on ne pourra l'appeler **que dans les méthodes de la classe**.
+On préfère mettre toutes les propriétés en private et les méthodes en public, afin que les propriétés ne puissent pas être modifiées directement, mais que l'on soit obligés de passer par une méthode pour les modifier (la méthode permet de ne pas modifier ou renvoyer directement la propriété, mais d'écrire du code afin de vérifier la valeur saisie avant de la modifier ou renvoyer).
+*exemple:dans notre classe Article ci-dessous, si on faisait $article1->content = 'nouvelleValeur', on pourrait modifier la propriété $content de notre objet sans vérification. Si l'on passe par la méthode $article1->setContent('nouvelleValeur), on vérifierait d'abord si notre nouvelleValeur respecte certaines conditions (par exemple si elle n'est pas vide, si elle fait plus de N caractères etc ...) et on ne modifierait la propriété $name que si c'est le cas, sinon on afficherait un  message d'erreur.*
 Les propriétés d'un objet, si elles sont en public, sont accessible via **nomDeL'objet->nomDeLaPropriété**
 
 
-- La methode __construct est à créer pour chaque classe. Toute méthode nommée __construct sera automatiquement exécutée lors de la création d'instances.
-  Cette méthode sert principalement à affecter les bonnes valeurs aux propriétés de la nouvelle instance. En effet, lors de la déclaration des propriétés, on ne leur attribue pas de valeur, elles sont vides, mais elles existent. dans la méthode __construct, on indique en paramètre les informations dont la classe a besoin pour fonctionner. Ces informations seront fournies à chaque création d'instances. On donne ainsi le nombre de paramètres à fournir, et on affecte ces paramètres aux propriétés de nos variables.
-  De même, Toute méthode nommée  __destruct sera automatiquement exécutée à la destruction d'un objet (fin de script ou destruction de la variable).
+- La methode **__construct** est à créer pour chaque classe. Toute méthode nommée __construct sera automatiquement exécutée lors de la création d'instances.
+  Cette méthode sert principalement à **affecter les bonnes valeurs aux propriétés de la nouvelle instance**. En effet, lors de la déclaration des propriétés, on ne leur attribue pas de valeur, elles sont vides, mais elles existent. dans la méthode __construct, on indique en paramètre les informations dont la classe a besoin pour fonctionner. Ces informations seront fournies à chaque création d'instances. On donne ainsi le nombre de paramètres à fournir, et on affecte ces paramètres aux propriétés de nos variables.
+
+- De même, Toute méthode nommée **__destruct** sera automatiquement exécutée à la destruction d'un objet (fin de script ou destruction de la variable).
+  
 - les autres méthodes sont accessibles comme les propriétés via **nomDeL'objet->nomDeLaMethode()**. Elles permettent d'exécuter un même bout de code qui changera pour chaque objet selon les valeurs de ses propriétés.
-- Getters et setters : On préfère comme dit plus haut être obligés de passer par des méthodes pour récupérer une propriété d'un objet ou pour modifier sa valeur. On peut donc créer des méthodes get et set pour chaque propriété. On peut aussi passer par des méthodes natives de php faites exprès pour : __get et __set :
-- 
-Au lieu d'avoir une méthode get par propriété et une méthode set par propriété, on aura une seule méthode get, qui prendra en argument la propriété que l'on souhaite récupérer, et une méthode set, qui prendra comme argument la propriété que l'on souhaite modifier et la nouvelle valeur que l'on souhaite lui attribuer. On pourra ensuite faire des conditions pour éxecuter un code ou un autre selon la propriété appelée.
+  
+- **Getters et setters** : On préfère comme dit plus haut être obligés de passer par des méthodes pour récupérer une propriété d'un objet ou pour modifier sa valeur. On peut donc créer des méthodes get et set pour chaque propriété. On peut aussi passer par des méthodes natives de php faites exprès pour :**__get et __set** :
+  
+Au lieu d'avoir une méthode **get** par propriété et une méthode **set** par propriété, on aura une seule méthode **get**, qui prendra en argument la **propriété** que l'on souhaite récupérer, et une méthode **set**, qui prendra comme argument la **propriété** que l'on souhaite modifier et la nouvelle **valeur** que l'on souhaite lui attribuer. On pourra ensuite faire des conditions pour éxecuter un code ou un autre selon la propriété appelée.
 
 * class Article {*--> création d'une classe nommée Article*
   * *--> Création des propriétés qu'auront les objets créés à partir de cette classe*
   * private $name;
   * private $title;
   * private $content;
-  * 
+  
   * *--> Création d'un constructor*
   * public function __construct($newName, $newTitle, $newContent) { *--> Ici on signale que pour que la classe fonctionne, à chaque création d'un nouvel objet Article il nous faudra 3 infos, la première sera stockée dans une variable $name, la deuxième dans une variable $title et la dernière dans une variable $content.*
   * $this->name = $newName; *-->Ici on indique que la première info reçue lors de la création de l'instance (que l'on avait stockée dans une variable $name) est à affecter à la propriété $name de notre objet. Le $this permet de dire que cette valeur sera à affecter à l'objet qui a appelé la méthode, donc celui qui vient d'être créé (la méthode __construct étant appelée automatiquement lors de la création de l'objet).*
@@ -84,20 +88,28 @@ Au lieu d'avoir une méthode get par propriété et une méthode set par propri�
   *  public function getArticleName() {
      *  return $this->name; *Ici les $this permet de dire que l'on récupèrera la propriété $name de l'objet qui appelera la méthode. Par exemple, si l'on créé un objet article1 à partir de notre classe, la fonction $article1->getArticleName() renverra la propriété $name de l'article 1.*
   *  }
+  *  public function setContent($newContent) {
+  *  if( ...) {
+  *  *--> Si notre $newContent respecte certaines conditions, alors on modifie la propriété $content, sinon on affiche une erreur.*
+  *  $this->content = $newContent
+  *  } else {
+  *  echo 'Contenu non valide';
+  *  }
+  *  }
   *  *--> Création d'un getter*
   *  public function __get($property) { *--> lorsque l'on appelera cette méthode, on attend une info, que l'on stockera dans la variable $property*
-     *  if('name' == $property) {
-     *  *-->On execute du code spécifique si on a appelé __get(name)*
-     *  } else if ('title' == $property) {
-     *  } else if('content' == $property) {
-     *  } else {
-     *  echo "Cette propriété n'existe pas";
-     *  }
+  *  if('name' == $property) {
+  *  *-->On execute du code spécifique si on a appelé __get(name)*
+  *  } else if ('title' == $property) {
+  *  } else if('content' == $property) {
+  *  } else {
+  *  echo "Cette propriété n'existe pas";
+  *  }
   *  }
 
-* }
+  * }
 
-- création d'un objet à partir de la classe Article (une instance) :
+- *-->création d'un objet à partir de la classe Article (une instance) :*
 - $article1 = new Article('valeur 1', 'valeur 2','valeur 3');
 - *Comme on l'a indiqué dans le constructor, il nous faut 3 valeurs pour faire fonctionner notre objet. Ici 'valeur 1' étant la première info entre parenthèses, quand le construcotr sera exécuté, il stockera dans la variable $newName la valeur 'valeur 1', et affectera cette valeur à la propriété $name de l'objet article1(avec le $this->name = $newName.*
-- Notre article1 étant une instance de la classe Article, il aura par défaut les propriétés déclarées dans la classe Article, auquel PHP attribuera les valeurs indiquées entre parenthèses grâce au constructor, et pourra utiliser les méthodes déclarées dans la classe Article.
+- *Notre article1 étant une instance de la classe Article, il aura par défaut les propriétés déclarées dans la classe Article, auquel PHP attribuera les valeurs indiquées entre parenthèses grâce au constructor, et pourra utiliser les méthodes déclarées dans la classe Article.*
