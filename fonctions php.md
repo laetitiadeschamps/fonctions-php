@@ -80,34 +80,34 @@ Au lieu d'avoir une méthode **get** par propriété et une méthode **set** par
   
   * *--> Création d'un constructor*
   * public function __construct($newName, $newTitle, $newContent) { *--> Ici on signale que pour que la classe fonctionne, à chaque création d'un nouvel objet Article il nous faudra 3 infos, la première sera stockée dans une variable $name, la deuxième dans une variable $title et la dernière dans une variable $content.*
-  * $this->name = $newName; *-->Ici on indique que la première info reçue lors de la création de l'instance (que l'on avait stockée dans une variable $name) est à affecter à la propriété $name de notre objet. Le $this permet de dire que cette valeur sera à affecter à l'objet qui a appelé la méthode, donc celui qui vient d'être créé (la méthode __construct étant appelée automatiquement lors de la création de l'objet).*
-  * $this->newTitle = $title;
-  * $this->newContent = $content;
-  * }
+    * $this->name = $newName; *-->Ici on indique que la première info reçue lors de la création de l'instance (que l'on avait stockée dans une variable $name) est à affecter à la propriété $name de notre objet. Le $this permet de dire que cette valeur sera à affecter à l'objet qui a appelé la méthode, donc celui qui vient d'être créé (la méthode __construct étant appelée automatiquement lors de la création de l'objet).*
+    * $this->newTitle = $title;
+    * $this->newContent = $content;
+    * }
   *  *--> Création d'une méthode*
   *  public function getArticleName() {
      *  return $this->name; *Ici les $this permet de dire que l'on récupèrera la propriété $name de l'objet qui appelera la méthode. Par exemple, si l'on créé un objet article1 à partir de notre classe, la fonction $article1->getArticleName() renverra la propriété $name de l'article 1.*
   *  }
   *  public function setContent($newContent) {
-  *  if( ...) {
-  *  *--> Si notre $newContent respecte certaines conditions, alors on modifie la propriété $content, sinon on affiche une erreur.*
-  *  $this->content = $newContent
-  *  } else {
-  *  echo 'Contenu non valide';
-  *  }
+     *  if( ...) {
+        *  *--> Si notre $newContent respecte certaines conditions, alors on modifie la propriété $content, sinon on affiche une erreur.*
+        *  $this->content = $newContent
+     *  } else {
+        *  echo 'Contenu non valide';
+     *  }
   *  }
   *  *--> Création d'un getter*
   *  public function __get($property) { *--> lorsque l'on appelera cette méthode, on attend une info, que l'on stockera dans la variable $property*
-  *  if('name' == $property) {
-  *  *-->On execute du code spécifique si on a appelé __get(name)*
-  *  } else if ('title' == $property) {
-  *  } else if('content' == $property) {
-  *  } else {
-  *  echo "Cette propriété n'existe pas";
-  *  }
+     *  if('name' == $property) {
+        *  *-->On execute du code spécifique si on a appelé __get(name)*
+     *  } else if ('title' == $property) {
+     *  } else if('content' == $property) {
+     *  } else {
+        *  echo "Cette propriété n'existe pas";
+     *  }
   *  }
 
-  * }
+* }
 
 - *-->création d'un objet à partir de la classe Article (une instance) :*
 - $article1 = new Article('valeur 1', 'valeur 2','valeur 3');
